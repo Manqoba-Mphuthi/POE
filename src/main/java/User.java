@@ -24,4 +24,11 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+    
+    //Getters and setters
+    
+    public String getUsername() { return username;}
+    public String getPassword() { return password;}
+    public String getFirstName() { return firstName;}
+    public String getLastName() { return lastName;}
 }
