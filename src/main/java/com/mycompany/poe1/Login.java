@@ -98,11 +98,29 @@ public class Login {
      //Method to run the login
      
      public void run() {
-     System.out.println(registerUser());
-     System.out.print("Enter username: ");
-     String username = scanner.nextLine();
-     System.out.print("Enter password: ");
-     String password = scanner.nextLine();
-     System.out.println(returnLoginStatus(username, password));
+       boolean isRegistered = false;
+       
+       while (!isRegistered) {
+           System.out.println("Please register: ");
+           String registrationStatus = registerUser();
+           
+           if (registrationStatus.contains("User registered successfully")) {
+               
+           System.out.println(registrationStatus);
+           isRegistered = true;
+           } else {
+               
+           System.out.println(registrationStatus);
+           System.out.println("Registration failed. Please try again.");
+           }
+       } 
+          
+           System.out.println("Please Login");
+              
+              System.out.print("Enter username: ");
+              String username = scanner.nextLine();
+              System.out.print("Enter password: ");
+              String password = scanner.nextLine();
+              System.out.println(returnLoginStatus(username, password));
         }    
 }
