@@ -7,12 +7,20 @@
  *
  * @author RC_Student_lab
  */
+import java.util.Scanner;
 public class Login {
+    
    //This class will deal with user registration, login, and password complexity checks.
     
     //Stores registered user
     
     private User registeredUser;
+    private Scanner scanner;
+    
+    //Constructor
+    public Login() {
+        this.scanner = new Scanner(System.in);
+    }
     
     //Method that checks if username is formatted properly (contains underscore and no more than 5 characters long)
    
@@ -31,6 +39,20 @@ public class Login {
     
     public String registerUser(String username, String password, String firstName, String lastName) {
     
+    //Prompt user to enter details
+     
+     System.out.print("Please enter username: ");
+     username = scanner.nextLine();
+     
+     System.out.print("Please enter password: ");
+     password = scanner.nextLine();
+     
+     System.out.print("Please enter first name: ");
+     firstName = scanner.nextLine();
+     
+     System.out.print("Please enter last name: ");
+     lastName = scanner.nextLine();
+     
     //If statements that check username and password formats
     
     if (!checkUserName(username)) {
