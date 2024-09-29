@@ -1,3 +1,5 @@
+package com.mycompany.poe1;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -37,21 +39,21 @@ public class Login {
     }   
     //Method that registers a user
     
-    public String registerUser(String username, String password, String firstName, String lastName) {
+    public String registerUser() {
     
     //Prompt user to enter details
      
      System.out.print("Please enter username: ");
-     username = scanner.nextLine();
+      String username = scanner.nextLine();
      
      System.out.print("Please enter password: ");
-     password = scanner.nextLine();
+     String password = scanner.nextLine();
      
      System.out.print("Please enter first name: ");
-     firstName = scanner.nextLine();
+     String firstName = scanner.nextLine();
      
      System.out.print("Please enter last name: ");
-     lastName = scanner.nextLine();
+     String lastName = scanner.nextLine();
      
     //If statements that check if username and password are formatted correctly
     
@@ -82,9 +84,19 @@ public class Login {
             return "Welcome " +
          registeredUser.getFirstName() + " " +
          registeredUser.getLastName() + ", it is great to see you again.";
+        } else {
+            return "Username or password incorrect, please try again";
         }
+    }
     
      //Method to run the login
      
-     
-
+     public void run() {
+     registerUser();
+     System.out.print("Please enter username");
+     String username = scanner.nextLine();
+     System.out.print("Please enter password");
+     String password = scanner.nextLine();
+     System.out.println(returnLoginStatus(username, password));
+     }
+}
