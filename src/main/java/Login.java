@@ -64,9 +64,15 @@ public class Login {
     
      //Create a new user and store it
     
-    registeredUser = new User(username, password, firstName, lastName);
+     registeredUser = new User(username, password, firstName, lastName);
         return "User registered successfully.";
-    
     }
+    
+     //Method to login a user
+     public boolean loginUser(String username, String password) {
+         return registeredUser != null && registeredUser.getUsername().equals(username)
+                 && registeredUser.getPassword().equals(password);
+     }
+    
 }
 
