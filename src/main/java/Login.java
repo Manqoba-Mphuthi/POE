@@ -53,16 +53,16 @@ public class Login {
      System.out.print("Please enter last name: ");
      lastName = scanner.nextLine();
      
-    //If statements that check username and password formats
+    //If statements that check if username and password are formatted correctly
     
-    if (!checkUserName(username)) {
-        return "Username is not correctly formatted.";
-    }
-    if (!checkPasswordComplexity(password)) {
-        return "Password is not correctly formatted.";
-    }
+     if (!checkUserName(username)) {
+         return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
+     }
+     if (!checkPasswordComplexity(password)) {
+         return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital, a number and a special character.";
+     }
     
-    //Create a new user and store it
+     //Create a new user and store it
     
     registeredUser = new User(username, password, firstName, lastName);
         return "User registered successfully.";
