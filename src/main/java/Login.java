@@ -69,10 +69,22 @@ public class Login {
     }
     
      //Method to login a user
-     public boolean loginUser(String username, String password) {
+     
+    public boolean loginUser(String username, String password) {
          return registeredUser != null && registeredUser.getUsername().equals(username)
                  && registeredUser.getPassword().equals(password);
      }
+     
+     //Method to return login status
     
-}
+    public String returnLoginStatus(String username, String password) {
+        if (loginUser(username, password)) {
+            return "Welcome " +
+         registeredUser.getFirstName() + " " +
+         registeredUser.getLastName() + ", it is great to see you again.";
+        }
+    
+     //Method to run the login
+     
+     
 
