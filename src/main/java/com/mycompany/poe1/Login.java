@@ -17,7 +17,7 @@ public class Login {
     //Stores registered user
     
     private User registeredUser;
-    private Scanner scanner;
+    private final Scanner scanner;
     
     //Constructor
     public Login() {
@@ -31,43 +31,49 @@ public class Login {
     } 
     //Method that checks if password meets complexity requirements ( >=8 characters long, contain capital letter, a number, and a special character)
     
-    public boolean checkPasswordComplexity(String password) {
-               return password.length() >= 8
-                  && password.matches(".[A-Z].")
-                  && password.matches(".[0-9].")
-                  && password.matches(".[^a-zA-Z0-9].");
-    }   
+    public boolean isValidPassword(String password) {
+        boolean hasUpperCase = password.matches(".[A-Z].");
+        boolean hasDigit = password.matches(".[0-9].");
+        boolean hasSpecialChar = password.matches(".[^a-zA-Z0-9].");
+        boolean hasMinLength = password.length() >=8;
+        
+        return hasUpperCase && hasDigit && hasSpecialChar && hasMinLength;
+    } 
     //Method that registers a user
     
     public String registerUser() {
     
     //Prompt user to enter details
-     
-     System.out.print("Please enter username: ");
-      String username = scanner.nextLine();
-     
-     System.out.print("Please enter password: ");
-     String password = scanner.nextLine();
-     
+        
      System.out.print("Please enter first name: ");
      String firstName = scanner.nextLine();
      
      System.out.print("Please enter last name: ");
      String lastName = scanner.nextLine();
      
+     System.out.print("Please enter username: ");
+     String username = scanner.nextLine();
+     
+     System.out.print("Please enter password: ");
+     String password = scanner.nextLine();
+    
     //If statements that check if username and password are formatted correctly
     
      if (!checkUserName(username)) {
          return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
+     } else {
+         System.out.println("Username successfully captured");
      }
-     if (!checkPasswordComplexity(password)) {
+     if (isValidPassword(password)) {
          return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital, a number and a special character.";
+     } else {
+         System.out.println("Password successfully captured");
      }
     
      //Create a new user and store it
     
      registeredUser = new User(username, password, firstName, lastName);
-        return "User registered successfully.";
+        return "Username successfully captured\nPassword successfully captured\nUser registered successfully.";
     }
     
      //Method to login a user
@@ -92,11 +98,11 @@ public class Login {
      //Method to run the login
      
      public void run() {
-     registerUser();
-     System.out.print("Please enter username");
+     System.out.println(registerUser());
+     System.out.print("Enter username: ");
      String username = scanner.nextLine();
-     System.out.print("Please enter password");
+     System.out.print("Enter password: ");
      String password = scanner.nextLine();
      System.out.println(returnLoginStatus(username, password));
-     }
+        }    
 }
