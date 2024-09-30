@@ -19,8 +19,16 @@ public class User {
     private String lastName;
     
     //Constructor
+
+    /**
+     *
+     * @param username
+     * @param password
+     * @param firstName
+     * @param lastName
+     */
     
-    public User(String username, String password, String firstName, String lastName ) {
+     public User(String username, String password, String firstName, String lastName ) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -33,4 +41,6 @@ public class User {
     public String getPassword() { return password;}
     public String getFirstName() { return firstName;}
     public String getLastName() { return lastName;}
+
+ 
 }

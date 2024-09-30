@@ -10,6 +10,7 @@ package com.mycompany.poe1;
  * @author RC_Student_lab
  */
 import java.util.Scanner;
+
 public class Login {
     
    //This class will deal with user registration, login, and password complexity checks.
@@ -21,7 +22,7 @@ public class Login {
     
     //Constructor
     public Login() {
-        this.scanner = new Scanner(System.in);
+        this.scanner = new Scanner(System.in);       
     }
     
     //Method that checks if username is formatted properly (contains underscore and no more than 5 characters long)
@@ -41,7 +42,7 @@ public class Login {
     } 
     //Method that registers a user
     
-    public String registerUser() {
+    public  String registerUser() {
     
     //Prompt user to enter details
         
