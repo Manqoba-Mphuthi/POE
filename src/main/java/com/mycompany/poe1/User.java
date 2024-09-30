@@ -10,7 +10,7 @@ package com.mycompany.poe1;
  * @author RC_Student_lab
  */
 public class User {
-    
+
     //Declaration of varaiables
     
     private String username;
