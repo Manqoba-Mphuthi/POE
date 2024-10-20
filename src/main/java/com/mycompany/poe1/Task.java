@@ -31,4 +31,10 @@ public Task(String taskName, int taskNumber, String taskDescription, String deve
     this.taskID = taskID;
     this.taskStatus = taskStatus;
 }
+
+//Method to check if the task description length is valid (less than 50 characters)
+public boolean checkTaskDescription() {
+    return taskDescription.length() <= 50;
+}
+
 }
