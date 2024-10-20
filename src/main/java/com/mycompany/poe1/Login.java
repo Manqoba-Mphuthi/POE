@@ -33,9 +33,9 @@ public class Login {
     //Method that checks if password meets complexity requirements ( >=8 characters long, contain capital letter, a number, and a special character)
     
     public boolean isValidPassword(String password) {
-        boolean hasUpperCase = password.matches(".[A-Z].");
-        boolean hasDigit = password.matches(".[0-9].");
-        boolean hasSpecialChar = password.matches(".[^a-zA-Z0-9].");
+        boolean hasUpperCase = password.matches(".*[A-Z]*.");
+        boolean hasDigit = password.matches(".*[0-9]*.");
+        boolean hasSpecialChar = password.matches(".*[^a-zA-Z0-9]*.");
         boolean hasMinLength = password.length() >=8;
         
         return hasUpperCase && hasDigit && hasSpecialChar && hasMinLength;
@@ -58,14 +58,16 @@ public class Login {
      System.out.print("Please enter password: ");
      String password = scanner.nextLine();
     
-    //If statements that check if username and password are formatted correctly
+    //check if username is formatted correctly
     
      if (!checkUserName(username)) {
          return "Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.";
      } else {
          System.out.println("Username successfully captured");
      }
-     if (isValidPassword(password)) {
+     
+     //check if password is formatted correctly
+     if (!isValidPassword(password)) {
          return "Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital, a number and a special character.";
      } else {
          System.out.println("Password successfully captured");
@@ -74,7 +76,7 @@ public class Login {
      //Create a new user and store it
     
      registeredUser = new User(username, password, firstName, lastName);
-        return "Username successfully captured\nPassword successfully captured\nUser registered successfully.";
+        return "User registered successfully.";
     }
     
      //Method to login a user
@@ -115,13 +117,15 @@ public class Login {
            System.out.println("Registration failed. Please try again.");
            }
        } 
-          
+            //Login process
            System.out.println("Please Login");
               
               System.out.print("Enter username: ");
               String username = scanner.nextLine();
               System.out.print("Enter password: ");
               String password = scanner.nextLine();
+            
+             //display Login status
               System.out.println(returnLoginStatus(username, password));
         }    
 }
