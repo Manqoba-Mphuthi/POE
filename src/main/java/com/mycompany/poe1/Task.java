@@ -65,4 +65,9 @@ public String printTaskDetails() {
 public int returnTaskHours() {
     return taskDuration;
 }
+
+//Method to set task status based on user input (e.g. To Do, Done, Doing)
+public void setTaskStatus(String status) {
+    this.taskStatus = status;
+}
 }
