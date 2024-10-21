@@ -70,4 +70,15 @@ public int returnTaskHours() {
 public void setTaskStatus(String status) {
     this.taskStatus = status;
 }
+
+//Getters for task variables
+public String getTaskName() {return taskName;}
+public int getTaskNumber() {return taskNumber;}
+public String getTaskDescription() {return taskDescription;}
+public String getDeveloperFirstName() {return developerFirstName;}
+public String getDeveloperLastName() {return developerLastName;}
+public int getTaskDuration() {return taskDuration;}
+public String getTaskID() {return taskID;}
+public String getTaskStatus() {return taskStatus;}
 }
+
