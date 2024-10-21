@@ -10,15 +10,18 @@ package com.mycompany.poe1;
  * @author RC_Student_lab
  */
 import java.util.Scanner;
-
+import java.util.ArrayList;
 public class Login {
     
    //This class will deal with user registration, login, and password complexity checks.
     
     //Stores registered user
-    
     private User registeredUser;
     private final Scanner scanner;
+    
+    //Stores tasks
+    private ArrayList<Task> tasks = new ArrayList<>();
+    private int taskCounter = 0;
     
     //Constructor
     public Login() {
