@@ -50,5 +50,14 @@ public String creatyeTaskID() {
                           return taskInitials + ":" + taskNumber + ":" + developerEnd;            
 }
 
-
+//Method to print task details in the required format
+public String printTaskDetails() {
+    return "Task Status: " + taskStatus + "\n" + 
+           "Developer: " + developerFirstName + " " + developerLastName + "\n" +         
+           "Task Number: " + taskNumber + "\n" + 
+           "Task Name: " + taskName + "\n" +
+           "Task Description: " + taskDescription + "\n" +
+           "Task ID: " + taskID + "\n" +
+           "Task Duration: " + taskDuration + "hours";
+}
 }
