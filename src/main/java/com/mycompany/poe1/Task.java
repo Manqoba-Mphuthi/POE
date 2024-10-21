@@ -60,4 +60,9 @@ public String printTaskDetails() {
            "Task ID: " + taskID + "\n" +
            "Task Duration: " + taskDuration + "hours";
 }
+
+//Method to return the total hours for the week
+public int returnTaskHours() {
+    return taskDuration;
+}
 }
