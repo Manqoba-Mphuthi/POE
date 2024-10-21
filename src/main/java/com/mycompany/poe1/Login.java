@@ -101,7 +101,44 @@ public class Login {
         }
     }
     
-     //Method to run the login
+//Method to add tasks
+    public void addTasks() {
+        System.out.println("Welcome to EasyKanban");
+        
+        //Asking user how many tasks they want to add
+        System.out.print("How many tasks would you like to add");
+        int numOfTasks = Integer.parseInt(scanner.nextLine());
+        
+        for (int i = 0; i < numOfTasks; i++) {
+            //collect task details
+            
+            System.out.print("Enter task name: ");
+            String taskName = scanner.nextLine();
+            
+            System.out.print("Enter task description (50 characters max):");
+            String taskDescription = scanner.nextLine();
+            if (taskDescription.length() > 50) {
+                System.out.println("Please enter a task description of less than 50 characters");
+                i--;
+                continue; //continue loop until valid task description
+            }
+            
+            System.out.print("Enter developer first name: ");
+            String developerFirstName = scanner.nextLine();
+            
+            System.out.print("Enter developer last name: ");
+            String developerLastName = scanner.nextLine();
+            
+            System.out.print("Enter task duration (in hours): ");
+            int taskDuration = Integer.parseInt(scanner.nextLine());
+            
+            
+            
+        }
+    }
+     
+
+//Method to run the login
      
      public void run() {
        boolean isRegistered = false;
