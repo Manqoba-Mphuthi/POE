@@ -102,7 +102,7 @@ public class Login {
     }
     
 //Method to add tasks
-    public void addTasks() {
+    public void addTask() {
         System.out.println("Welcome to EasyKanban");
         
         //Asking user how many tasks they want to add
@@ -132,9 +132,34 @@ public class Login {
             System.out.print("Enter task duration (in hours): ");
             int taskDuration = Integer.parseInt(scanner.nextLine());
             
+            //Create and add new task
             
+            Task newTask = newTask(taskName, taskCounter++, taskDescription, developerFirstName, developerLastName, taskDuration);
             
+            //Set task status
+            
+            System.out.println("Select task status: \n1. To Do\n2. Doing\n3. Done");
+            int statusChoice = Integer.parseInt(scanner.nextLine());
+            switch (statusChoice) {
+                case 1:
+                    newTask.setTaskStatus("To Do");
+                       break;
+                case 2:
+                    newTask.setTaskStatus("Doing");
+                       break;
+                case 3:
+                    newTask.setTaskStatus("Done");
+                       break;
+                default:
+                    newTask.setTaskStatus("To Do");                        
+            }
+                 tasks.add(newTask);
+                 
+                 System.out.println("Task successfully captured");
         }
+        
+               
+                
     }
      
 
@@ -168,4 +193,8 @@ public class Login {
              //display Login status
               System.out.println(returnLoginStatus(username, password));
         }    
+
+    private Task newTask(String taskName, int i, String taskDescription, String developerFirstName, String developerLastName, int taskDuration) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
