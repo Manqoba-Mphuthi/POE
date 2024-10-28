@@ -24,10 +24,7 @@ public class Login {
     private ArrayList<Task> tasks = new ArrayList<>();
     private int taskCounter = 0;
     
-    //Constructor
-    public Login() {
-        this.scanner = new Scanner(System.in);       
-    }
+   
     
     //Method that checks if username is formatted properly (contains underscore and no more than 5 characters long)
    
@@ -97,75 +94,64 @@ public class Login {
         } else {
             return "Username or password incorrect, please try again";
         }
-    }
+    } 
     
-        //Method to add tasks
-        public void addTasks() {
-        JOptionPane.showMessageDialog(null,"Welcome to EasyKanban");
-        
-        //Asking user how many tasks they want to add
-        int numOfTasks =
-                Integer.parseInt(JOptionPane.showInputDialog("How many tasks would you like to add?"));
-        for (int i = 0; i < numOfTasks; i++) {
-           
-        //collect task details
-            
-         String taskName =
-                 JOptionPane.showInputDialog("Enter task name: ");
-         String taskDescription =
-                 JOptionPane.showInputDialog("Enter task description (max 50 characters):");
-         
-         //Validate task description length
-         if (taskDescription.length() > 50)
-         {
-            
-           JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters");
-           i--; //Repeat if decription is invalid
-           continue;
-         }
-         
-         //Gather additional task details
-         String developerFirstName =
-                 JOptionPane.showInputDialog("Enter developer first name: ");
-         String developerLastName =
-                 JOptionPane.showInputDialog("Enter developer last name: ");
-         int taskDuration =
-                 Integer.parseInt(JOptionPane.showInputDialog("Enter task duration (in hours): "));
-           
-          //Create and add new task
-            
-            Task newTask = new Task(taskName, taskCounter++, taskDescription, developerFirstName, developerLastName, taskDuration);
+    // Method to add tasks
+public void addTasks() {
+    JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
 
-            
-            //Set task status
-            
-             String[]
-                     statusOptions = {"To Do", "Doing", "Done"};
-             int statusChoice =
-                     JOptionPane.showOptionDialog(null, "Select task status: ", "Task Status",
-                       
-                             JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, statusOptions, statusOptions[0]);
-                             
-            //Set task status based on user selection
-            newTask.setTaskStatus(statusOptions[statusChoice]);
-            
-            //Add task to task list and confirm to the user
-            tasks.add(newTask);
-            
-            JOptionPane.showMessageDialog(null, "Task successfully captured");
+    // Asking user how many tasks they want to add
+    int numOfTasks = Integer.parseInt(JOptionPane.showInputDialog("How many tasks would you like to add?"));
+    
+    for (int i = 0; i < numOfTasks; i++) {
+        // Collect task details
+        String taskName = JOptionPane.showInputDialog("Enter task name: ");
+        String taskDescription = JOptionPane.showInputDialog("Enter task description (max 50 characters):");
+
+        // Validate task description length
+        if (taskDescription.length() > 50) {
+            JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters");
+            i--; // Repeat if description is invalid
+            continue; // Skip to the next iteration
         }
+
+        // Gather additional task details
+        String developerFirstName = JOptionPane.showInputDialog("Enter developer first name: ");
+        String developerLastName = JOptionPane.showInputDialog("Enter developer last name: ");
+        int taskDuration = Integer.parseInt(JOptionPane.showInputDialog("Enter task duration (in hours): "));
         
-        
-             //Show total hours across all tasks
-                int totalHours = tasks.stream().mapToInt(Task::returnTaskHours).sum();
-                
-               JOptionPane.showMessageDialog(null, "Total hours of all tasks: " + totalHours);
-                
-             //Display each task's details using JOptionPane
-              for (Task task : tasks)  {
-                  javax.swing.JOptionPane.showMessageDialog(null, task.printTaskDetails());
-              }
-    }       //Method to display the main menu afer successful login
+        // Create and add new task
+        Task newTask = new Task(taskName, taskCounter++, taskDescription, developerFirstName, developerLastName, taskDuration);
+
+        // Set task status
+        String[] statusOptions = {"To Do", "Doing", "Done"};
+        int statusChoice = JOptionPane.showOptionDialog(null, "Select task status: ", "Task Status",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, statusOptions, statusOptions[0]);
+
+        // Check if a valid status was selected
+        if (statusChoice >= 0 && statusChoice < statusOptions.length) {
+            newTask.setTaskStatus(statusOptions[statusChoice]); // Set task status based on user selection
+        } else {
+            newTask.setTaskStatus("To Do"); // Default to "To Do" if no valid option is selected
+        }
+
+        // Add task to task list and confirm to the user
+        tasks.add(newTask);
+        JOptionPane.showMessageDialog(null, "Task successfully captured");
+    }
+
+    // Show total hours across all tasks
+    int totalHours = tasks.stream().mapToInt(Task::returnTaskHours).sum();
+    JOptionPane.showMessageDialog(null, "Total hours of all tasks: " + totalHours);
+
+    // Display each task's details using JOptionPane
+    for (Task task : tasks) {
+        JOptionPane.showMessageDialog(null, task.printTaskDetails());
+    }
+}
+
+    
+       //Method to display the main menu afer successful login
              public void showMenu() {
                   boolean quit = false;
                   
@@ -201,34 +187,39 @@ public class Login {
 
             //Method to run the login
      
-              public void run() {
-             boolean isRegistered = false;
-       
-            while (!isRegistered) {
-            System.out.println("Please register: ");
+             // Method to start the registration and login process
+    public void run() {
+        boolean isRegistered = false;
+
+        // Registration loop
+        while (!isRegistered) {
+            JOptionPane.showMessageDialog(null, "Please register: ");
             String registrationStatus = registerUser();
-           
-           if (registrationStatus.contains("User registered successfully")) {
-               
-           System.out.println(registrationStatus);
-           isRegistered = true;
-           } else {
-               
-           System.out.println(registrationStatus);
-           System.out.println("Registration failed. Please try again.");
-           }
-       } 
-            //Login process
-           System.out.println("Please Login");
-              
-              System.out.print("Enter username: ");
-              String username = scanner.nextLine();
-              System.out.print("Enter password: ");
-              String password = scanner.nextLine();
-            
-             //display Login status
-              System.out.println(returnLoginStatus(username, password));
-        }    
 
+            // Check if registration is successful
+            if (registrationStatus.contains("User registered successfully")) {
+                JOptionPane.showMessageDialog(null, registrationStatus);
+                isRegistered = true;
+            } else {
+                JOptionPane.showMessageDialog(null, registrationStatus);
+            }
+        }
 
+        boolean isLoggedIn = false;
+        // Login loop
+        while (!isLoggedIn) {
+            JOptionPane.showMessageDialog(null, "Please Login");
+            String username = JOptionPane.showInputDialog("Enter username:");
+            String password = JOptionPane.showInputDialog("Enter password:");
+
+            // Display login status and check if login is successful
+            String loginStatus = returnLoginStatus(username, password);
+            JOptionPane.showMessageDialog(null, loginStatus);
+
+            if (loginUser(username, password)) {
+                isLoggedIn = true;
+                showMenu(); // Show main menu upon successful login
+            }
+        }
     }
+}
