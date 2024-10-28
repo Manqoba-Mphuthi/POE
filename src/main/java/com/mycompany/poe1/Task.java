@@ -38,7 +38,7 @@ public boolean checkTaskDescription() {
 }
 
 //Method to generate taskID based on task details (First two letters of task name, task number, last three letters of developer's last name)
-public String creatyeTaskID() {
+public String createTaskID() {
     String taskInitials = 
             taskName.length() >= 2 ?
             taskName.substring(0,2).toUpperCase():
