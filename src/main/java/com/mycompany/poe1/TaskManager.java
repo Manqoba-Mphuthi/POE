@@ -155,9 +155,34 @@ public class TaskManager {
         // Inform the user if no match is found
         JOptionPane.showMessageDialog(null, "Task not found.");
     }
+    // Method to display a report of all tasks
+    public void displayTaskReport() {
+        if (taskNames.isEmpty()) {
+            // If no tasks exist, inform the user
+            JOptionPane.showMessageDialog(null, "No tasks available.");
+            return;
+        }
+
+        // Create a StringBuilder to compile the report
+        StringBuilder report = new StringBuilder("Task Report:\n");
+
+        // Loop through all tasks and append their details to the report
+        for (int i = 0; i < taskNames.size(); i++) {
+            report.append("Task ID: ").append(taskIDs.get(i))
+                  .append("\nTask Name: ").append(taskNames.get(i))
+                  .append("\nDeveloper: ").append(developerNames.get(i))
+                  .append("\nDuration: ").append(taskDurations.get(i)).append(" hours")
+                  .append("\nStatus: ").append(taskStatuses.get(i))
+                  .append("\n--------------------------\n");
+        }
+
+        // Display the full report to the user
+        JOptionPane.showMessageDialog(null, report.toString());
+    }
+}
 
     
-    }
+    
 
 
 
