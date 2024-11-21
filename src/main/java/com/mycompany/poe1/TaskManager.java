@@ -55,5 +55,32 @@ public class TaskManager {
         // Display the result to the user
         JOptionPane.showMessageDialog(null, result.toString());
     }
+    // Method to find and display the task with the longest duration
+    public void displayLongestTask() {
+        if (taskDurations.isEmpty()) {
+            // If no tasks exist, inform the user
+            JOptionPane.showMessageDialog(null, "No tasks available to evaluate.");
+            return;
+        }
+
+        // Initialize variables to track the longest task
+        int longestDuration = 0;
+        int longestTaskIndex = 0;
+
+        // Loop through task durations to find the longest one
+        for (int i = 0; i < taskDurations.size(); i++) {
+            if (taskDurations.get(i) > longestDuration) {
+                longestDuration = taskDurations.get(i);
+                longestTaskIndex = i;
+            }
+        }
+
+        // Display the task with the longest duration
+        String result = "Task with the Longest Duration:\n" +
+                        "Developer: " + developerNames.get(longestTaskIndex) + "\n" +
+                        "Task Name: " + taskNames.get(longestTaskIndex) + "\n" +
+                        "Duration: " + longestDuration + " hours";
+        JOptionPane.showMessageDialog(null, result);
+    }
 
 }
