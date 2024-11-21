@@ -83,4 +83,26 @@ public class TaskManager {
         JOptionPane.showMessageDialog(null, result);
     }
 
+        // Method to search for a task by its name
+    public void searchTaskByName() {
+        // Ask the user for the task name to search
+        String taskNameToSearch = JOptionPane.showInputDialog("Enter the Task Name to search:");
+
+        // Loop through the taskNames array to find a match
+        for (int i = 0; i < taskNames.size(); i++) {
+            if (taskNames.get(i).equalsIgnoreCase(taskNameToSearch)) {
+                // Display task details if a match is found
+                String result = "Task Found:\n" +
+                                "Task Name: " + taskNames.get(i) + "\n" +
+                                "Developer: " + developerNames.get(i) + "\n" +
+                                "Status: " + taskStatuses.get(i);
+                JOptionPane.showMessageDialog(null, result);
+                return; // Exit after finding the first match
+            }
+        }
+
+        // Inform the user if no match is found
+        JOptionPane.showMessageDialog(null, "Task not found.");
+    }
+
 }
