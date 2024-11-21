@@ -10,6 +10,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+import java.io.InputStream;
 
 /**
  *
@@ -56,13 +59,10 @@ public class LoginTest {
     @Test
     public void testRegisterUserSuccess() {       
         System.out.println("registerUser");
-        Login instance = new Login();
-        String firstName = "John";
-        String lastName = "Doe";
-        String username = "kyl_1";
-        String password = "Ch&&sec@ke99!";
+        Login login = new Login();  
+        
         String expResult = "Username successfully captured\nPassword successfully captured\nUser registered successfully.";
-        String result = instance.registerUser();
+        String result = login.registerUser();
         assertEquals(expResult, result);
 
     }

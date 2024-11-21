@@ -42,13 +42,16 @@ public boolean checkTaskDescription() {
 public String createTaskID() {
     String taskInitials = 
             taskName.length() >= 2 ?
-            taskName.substring(0,2).toUpperCase():
+            taskName.substring(0, 2).toUpperCase() :
             taskName.toUpperCase();
+    
+    // Trim the developer's last name to remove any leading/trailing whitespace
     String developerEnd = 
-            developerLastName.length() >= 3 ?
-            developerLastName.substring(developerLastName.length() - 3).toUpperCase() :
-            developerLastName.toUpperCase();
-                          return taskInitials + ":" + taskNumber + ":" + developerEnd;            
+            developerLastName.trim().length() >= 3 ?
+            developerLastName.trim().substring(developerLastName.trim().length() - 3).toUpperCase() :
+            developerLastName.trim().toUpperCase();
+    
+    return taskInitials + ":" + taskNumber + ":" + developerEnd;            
 }
 
 //Method to print task details in the required format

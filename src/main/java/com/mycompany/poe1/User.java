@@ -19,14 +19,6 @@ public class User {
     private String lastName;
     
     //Constructor
-
-    /**
-     *
-     * @param username
-     * @param password
-     * @param firstName
-     * @param lastName
-     */
     
      public User(String username, String password, String firstName, String lastName ) {
         this.username = username;
