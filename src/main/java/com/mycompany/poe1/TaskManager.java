@@ -36,5 +36,24 @@ public class TaskManager {
         JOptionPane.showMessageDialog(null, "Task added successfully: \nTask ID: " + taskID);
     }
 
-   
+       // Method to display all tasks with status "Done"
+    public void displayTasksDone() {
+        // Create a StringBuilder to compile results
+        StringBuilder result = new StringBuilder("Tasks with status 'Done':\n");
+
+        // Iterate through the taskStatuses array
+        for (int i = 0; i < taskStatuses.size(); i++) {
+            // Check if the task status is "Done"
+            if (taskStatuses.get(i).equalsIgnoreCase("Done")) {
+                // Append task details to the result
+                result.append("Developer: ").append(developerNames.get(i))
+                      .append(", Task Name: ").append(taskNames.get(i))
+                      .append(", Duration: ").append(taskDurations.get(i)).append(" hours\n");
+            }
+        }
+
+        // Display the result to the user
+        JOptionPane.showMessageDialog(null, result.toString());
+    }
+
 }
