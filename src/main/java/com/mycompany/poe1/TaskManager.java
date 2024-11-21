@@ -131,6 +131,30 @@ public class TaskManager {
             JOptionPane.showMessageDialog(null, "No tasks found for developer " + developerToSearch);
         }
     }
+    // Method to delete a task using its name
+    public void deleteTaskByName() {
+        // Ask the user for the task name to delete
+        String taskNameToDelete = JOptionPane.showInputDialog("Enter the Task Name to delete:");
+
+        // Loop through the taskNames array to find a match
+        for (int i = 0; i < taskNames.size(); i++) {
+            if (taskNames.get(i).equalsIgnoreCase(taskNameToDelete)) {
+                // Remove task details from all arrays
+                developerNames.remove(i);
+                taskNames.remove(i);
+                taskIDs.remove(i);
+                taskDurations.remove(i);
+                taskStatuses.remove(i);
+
+                // Confirm task deletion
+                JOptionPane.showMessageDialog(null, "Task '" + taskNameToDelete + "' deleted successfully.");
+                return; // Exit after deleting the task
+            }
+        }
+
+        // Inform the user if no match is found
+        JOptionPane.showMessageDialog(null, "Task not found.");
+    }
 
     
     }
