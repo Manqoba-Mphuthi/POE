@@ -104,5 +104,36 @@ public class TaskManager {
         // Inform the user if no match is found
         JOptionPane.showMessageDialog(null, "Task not found.");
     }
+        // Method to search for all tasks assigned to a specific developer
+    public void searchTasksByDeveloper() {
+        // Prompt the user to enter a developer name
+        String developerToSearch = JOptionPane.showInputDialog("Enter the Developer's Name to search:");
 
-}
+        // Create a StringBuilder to compile results
+        StringBuilder result = new StringBuilder("Tasks assigned to " + developerToSearch + ":\n");
+
+        boolean tasksFound = false; // Flag to track if any tasks are found
+
+        // Loop through developerNames array to find matches
+        for (int i = 0; i < developerNames.size(); i++) {
+            if (developerNames.get(i).equalsIgnoreCase(developerToSearch)) {
+                // Append task details to the result
+                result.append("Task Name: ").append(taskNames.get(i))
+                      .append(", Status: ").append(taskStatuses.get(i)).append("\n");
+                tasksFound = true;
+            }
+        }
+
+        // Display results if tasks are found or inform the user otherwise
+        if (tasksFound) {
+            JOptionPane.showMessageDialog(null, result.toString());
+        } else {
+            JOptionPane.showMessageDialog(null, "No tasks found for developer " + developerToSearch);
+        }
+    }
+
+    
+    }
+
+
+
